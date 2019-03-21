@@ -6,6 +6,21 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProjectsTable extends Migration
 {
+    /*
+    1. Migracijų lentelių sukūrimas:
+    php artisan make:migration $veiksmas_lenteles_pav_daugiskaita_table $nustatymai
+
+	php artisan make:migration create_projects_table (sukuria migracijų failą, kuris vėliau sukurs lentelę pavadinimų projects)
+
+	php artisan make:migration create_projects_table --create=projects (sukuria migracijų faila su pavadinimu create_projects_table, create nustatymas reiškia, jog kuriame naują lentelę)
+
+	php artisan make:migration added_title_to_projects_table --table=projects (table nustatymas naudojamas koreguojant lentelę)
+
+	php artisan migrate (paleidžia migracijų lenteles, paleidžia tik up() lentelėse)
+
+	php artisan migrate:fresh (paleidžia ir up() ir down() metodus lentelėse)
+    */
+    
     /**
      * Run the migrations.
      *
