@@ -11,6 +11,14 @@
 |
 */
 
+// Vartotojas eina į eagle.test/ ir jam atidaro vaizdą welcome
 Route::get('/', function () {
+
     return view('welcome');
+});
+
+// eagle.test/puslapis
+// get reiškia GET metodą
+Route::get('/contact', function() {
+  echo "Mano puslapis";
 });

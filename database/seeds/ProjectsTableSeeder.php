@@ -35,15 +35,20 @@ class ProjectsTableSeeder extends Seeder
          naudojame Eloquent biblioteką */
 
       /* Kad galėtume dirbti su Eloquent reikia turėti modelį */
+      for ($i=0; $i < 10; $i++) {
+        $faker = Faker\Factory::create('lt_LT');
 
-      $project = new Project; // modelio Project iškvietimas
-      $project->title = 'Web & graphic design company';
-      $project->description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-      $project->year = 2015;
-      $project->client = 'Google';
-      $project->image_url = 'http://lorempixel.com/400/400/sports/';
-      $project->kategorija = 'creative';
-      $project->save();
+        $categories = ['creative', 'natural', 'personal', 'photography'];
+
+        $project = new Project; // modelio Project iškvietimas
+        $project->title = $faker->realText(30);
+        $project->description = $faker->realText(600);
+        $project->year = $faker->biasedNumberBetween(2000, 2019);
+        $project->client = $faker->company();
+        $project->image_url = $faker->imageUrl(380, 400, 'nature');
+        $project->kategorija = $categories[rand(0,3)];
+        $project->save();
+      }
 
     }
 }
