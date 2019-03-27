@@ -11,11 +11,8 @@
 |
 */
 
-// Vartotojas eina į eagle.test/ ir jam atidaro vaizdą welcome
-Route::get('/', function () {
-
-    return view('welcome');
-});
+// Kai vartotojas nueis į eagle.test/, jam atidarys HomeController kontrolerį ir metodą index
+Route::get('/', 'HomeController@index');
 
 // eagle.test/puslapis
 // get reiškia GET metodą
