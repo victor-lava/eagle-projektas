@@ -11,6 +11,7 @@
 |
 */
 
+
 // Kai vartotojas nueis į eagle.test/, jam atidarys HomeController kontrolerį ir metodą index
 Route::get('/', 'HomeController@index');
 
