@@ -50,7 +50,8 @@
       </nav>
       <!-- End Navbar -->
 
-      @yield('content') {{-- sekcijos pavadinimas, kurios kodas bus įterptas --}}
+      @yield('content') {{-- Puslapio sekcijos pavadinimas,
+                             kurios HTML kodas bus įterptas --}}
 
       <!-- FOOTER -->
       <footer class="footer">
