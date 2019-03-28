@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
+    /* Logika */
     public function index() {
-      return view('welcome'); // Atvaizduoja HTML kodą iš /resources/views/welcome.blade.php
+
+      return view('pages/home');
+      // Atvaizduoja HTML kodą iš /resources/views/pages/home.blade.php
     }
 
 }

@@ -14,9 +14,7 @@
 
 // Kai vartotojas nueis į eagle.test/, jam atidarys HomeController kontrolerį ir metodą index
 Route::get('/', 'HomeController@index');
+Route::get('/contact', 'ContactController@index');
 
-// eagle.test/puslapis
-// get reiškia GET metodą
-Route::get('/contact', function() {
-  echo "Mano puslapis";
-});
+Route::get('/projects', 'ProjectController@index'); // visiems
+Route::get('/projects/{title}', 'ProjectController@view'); // vienam projektui
