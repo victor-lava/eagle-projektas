@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
 
+  // Jei siunčiate duomenis:
+  //     1. Naudoti POST metodą būtinai apsirašant HTML formą. Pvz. method="POST"
+  //     2. Formoje turi būti CSRF laukelis, iškviečiamas su csrf_field() komanda. Skirtas apsisaugoti nuo CSRF atakų.
+  //     3. Routas aprašytas turi būti su post metodu, pvz. Route::post()
+  //     4. Routo metode (pvz. ContactController@save) išsikviesti duomenis. Pvz.   public function save(Request $request) {}
+  //     * - nepamiršti, jog HTML formos input laukeliai privalo turėti atribūtą name
+  //
+
     /* Atvaizduojame formą, HTML kodą */
     public function index() {
 
