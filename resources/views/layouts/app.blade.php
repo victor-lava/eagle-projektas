@@ -7,28 +7,33 @@
         <meta name="keywords" content="" />
         <meta name="author" content="Themesdesign" />
 
-        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
         <!-- Bootstrap Css-->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        {{-- Naudoti asset funkcija įsidedant lokalius: CSS, JS, šriftus, nuotraukas, sukuria linka /css/bootstrap.min.css --}}
+        <link rel="stylesheet" type="text/css"
+        href="{{ asset('css/bootstrap.min.css') }}" />
 
         <!-- Materialdesign icon Css-->
-        <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
+        <link rel="stylesheet" type="text/css"
+        href="{{ asset('css/materialdesignicons.min.css') }}" />
         <!-- Pe 7 icon Css-->
-        <link rel="stylesheet" type="text/css" href="css/pe-icon-7-stroke.css" />
+        <link rel="stylesheet" type="text/css"
+        href="{{ asset('css/pe-icon-7-stroke.css') }}" />
 
         <!-- Custom Css -->
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css"
+        href="{{ asset('css/style.css') }}" />
     </head>
     <body>
 
       <!-- Start Navbar -->
       <nav class="navbar navbar-expand-lg navbar-default navbar-custom navbar-light">
           <div class="container">
-              <a class="navbar-brand logo" href="index.html">Eagle</a>
+              <a class="navbar-brand logo" href="{{ route('home') }}">Eagle</a>
 
               <div class="navbar-header">
 
@@ -37,12 +42,20 @@
               </button>
               </div>
 
-              <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                  <ul class="nav navbar-nav ml-auto">
-                      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                      <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
-                      <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-navs ml-auto">
+                      <li class="nav-item{{ Route::is('home') ? ' active-item' : '' }}">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                      </li>
+                      <li class="nav-item{{ Route::is('projects') || Route::is('projects.view') ? ' active-item' : '' }}">
+                        <a class="nav-link" href="{{ route('projects') }}">Work</a></li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                      </li>
+                      <li class="nav-item{{ Route::is('contact') ? ' active-item' : '' }}">
+                        <a class="nav-link"
+                           href="{{ route('contact') }}">Contact</a>
+                      </li>
                   </ul>
               </div>
 
@@ -60,7 +73,9 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="text-center">
-                  <div class="logo center-block"><img src="images/logo.png" alt="" class=""></div>
+                  <div class="logo center-block">
+                    <img src="{{ asset('images/logo.png') }}" alt="" class="">
+                  </div>
 
                   <ul class="list-inline social-circle margin-t-30">
                     <li class="list-inline-item"><a href=""> <i class="mdi mdi-facebook"></i> </a></li>
@@ -83,11 +98,11 @@
       <!-- END FOOTER -->
 
       <!-- JAVASCRIPTS -->
-      <script src="js/jquery-2.1.4.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
+      <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
+      {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
       <!-- isotope filter plugin -->
-      <script src="js/isotope.pkgd.min.js"></script>
-      <script src="js/portfolio-filter.js"></script>
-      <script src="js/app.js"></script>
+      <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+      <script src="{{ asset('js/portfolio-filter.js') }}"></script>
+      <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

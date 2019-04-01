@@ -23,6 +23,9 @@
 </section>
 
 <!-- PROJEKTAI -->
+@component('partials/gallery', ['projects' => $projects,
+                                'isCenter' => false])
+@endcomponent
 
 <div class="row">
     <div class="col-lg-12">
@@ -33,7 +36,9 @@
 
            <!--  Tekstas "More works" atkeliauja į komponentą
                  kaip $slot kintamasis -->
-            @component('components/button', ['href' => 'http://google.com'])
+
+            <!-- /projects -->
+            @component('components/button', ['href' => route('projects')])
               More works
             @endcomponent
         </div>
