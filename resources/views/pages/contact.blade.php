@@ -41,6 +41,29 @@
                     <p class="text-muted">09 Design Street, Downtown Victoria, Australia</p>
                 </div>
             </div>
+
+
+            {{-- Klaidų sąrašui --}}
+            {{--
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
+            --}}
+
+            {{-- patikrina ar yra sesija, kurios pavadinimas message --}}
+            @if (session('message'))
+              <div class="alert alert-success">
+                  {{-- atspausdina sesija message --}}
+                  {{ session('message') }}
+              </div>
+          @endif
+
             <div class="col-lg-8">
                 <!-- Jei siunčiate duomenis:
                     1. Naudoti POST metodą būtinai apsirašant HTML formą. Pvz. method="POST"
@@ -51,31 +74,74 @@
                 -->
                 <form action="/contact" method="POST" class="form-custom">
 
-                  {{ csrf_field() }}
+                   {{ csrf_field() }}
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name">
+
+                                  <input type="text"
+                                        name="name"
+                                        class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                        placeholder="Your Name"
+                                        value="{{ old('name') }}"
+                                        {{ session('message') ? 'disabled' : ' '}}
+                                        >
+
+                                @if($errors->has('name'))
+                                  {{-- patikrinu ar input name turi klaidą --}}
+                                <div class="invalid-feedback">
+                                  {{ $errors->first('name') }}
+                                  {{-- atspausdina input name klaidą --}}
+                                </div>
+                                @endif
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="form-group">
-                                <input type="text" name="email" class="form-control" placeholder="Your Email">
+                                <input type="text" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Your Email" value="{{ old('email') }}">
+
+                                @if($errors->has('email'))
+                                <div class="invalid-feedback">
+                                  {{ $errors->first('email') }}
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input type="text" name="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="863111166" value="{{ old('phone') }}">
+
+                                @if($errors->has('phone'))
+                                <div class="invalid-feedback">
+                                  {{ $errors->first('phone') }}
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                <input type="text" name="subject" class="form-control{{ $errors->has('subject') ? ' is-invalid' : '' }}" placeholder="Subject" value="{{ old('subject') }}">
+
+                                @if($errors->has('subject'))
+                                <div class="invalid-feedback">
+                                  {{ $errors->first('subject') }}
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Your Message...."></textarea>
+                                <textarea class="form-control{{ $errors->has('message') ? ' is-invalid' : '' }}" name="message" rows="5" placeholder="Your Message....">{{ old('message') }}</textarea>
+                                @if($errors->has('message'))
+                                <div class="invalid-feedback">
+                                  {{ $errors->first('message') }}
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>

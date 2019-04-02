@@ -16,8 +16,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'ContactController@index')->name('contact'); // Skirtas atvaizduoti formai ir forma atvaizduojama metodu get
 
-/* Jei siunčiame duomenis, tai juos siunčiame į routą, kuris sukurtas post metodu.
- Šis routas pasiekiamas tik, kai siunčiami duomenys. */
+/* Jei siunčiame duomenis, tai juos siunčiame į routą, kuris sukurtas post metodu. Šis routas pasiekiamas tik, kai siunčiami duomenys. */
 Route::post('/contact', 'ContactController@save')->name('contact.save');
 
 Route::prefix('projects')->group(function () { // Grupuoja rautus pagal vardą
