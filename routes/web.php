@@ -28,3 +28,7 @@ Route::prefix('projects')->group(function () { // Grupuoja rautus pagal vardą
   Route::get('/{id}', 'ProjectController@view')->name('projects.view');
 });
 // vienam projektui
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

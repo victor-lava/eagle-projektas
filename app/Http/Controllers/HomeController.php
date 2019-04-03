@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
-    /* Logika */
-    public function index() {
-
-      $projects = Project::all();
-
-      return view('pages/home', ['projects' => $projects]);
-      // Atvaizduoja HTML kodą iš /resources/views/pages/home.blade.php
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
+    }
 }
