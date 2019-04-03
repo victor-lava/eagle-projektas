@@ -1,7 +1,14 @@
 @extends('layouts.auth')
 
 @section('content')
+
 <div class="container">
+  @if (session('message'))
+    <div class="alert alert-success">
+        {{-- atspausdina sesija message --}}
+        {{ session('message') }}
+    </div>
+  @endif
   @foreach($contacts as $contact)
     <div class="row justify-content-center mb-5">
         <div class="col-md-12">
@@ -21,9 +28,9 @@
                   <a  href="mailto:{{ $contact->email }}"
                       class="btn btn-primary btn-lg">Atsakyti</a>
 
-                  <form action="/" method="post">
+                  <form action="{{ route('contact.remove') }}" method="post">
                     @csrf
-
+                    <input type="hidden" name="id" value="{{ $contact->id }}">
                     <button type="submit" class="btn btn-danger btn-xs">Ištrinti</button>
                   </form>
                 </div>

@@ -31,6 +31,7 @@ Route::prefix('projects')->group(function () { // Grupuoja rautus pagal vardą
 
 
 Route::get('/admin', 'AdminController@index')->name('admin.index');
+Route::post('/contact/remove', 'AdminController@removeContact')->name('contact.remove');
 Auth::routes();
 
 // Route::get('/home', function() {
