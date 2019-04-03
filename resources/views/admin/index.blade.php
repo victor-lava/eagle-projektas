@@ -2,22 +2,34 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+  @foreach($contacts as $contact)
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header d-flex justify-content-between">
+                    <span>{{ $contact->full_name }}</span>
+                    <span>{{ $contact->email }}</span>
+                </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                  <span class="badge badge-success">{{ $contact->created_at }}</span>
+                  <h2>{{ $contact->subject }}</h2>
+                  <p>{{ $contact->message }}</p>
+                </div>
 
-                    You are logged in!
+                <div class="card-footer d-flex justify-content-between">
+                  <a  href="mailto:{{ $contact->email }}"
+                      class="btn btn-primary btn-lg">Atsakyti</a>
+
+                  <form action="/" method="post">
+                    @csrf
+
+                    <button type="submit" class="btn btn-danger btn-xs">Ištrinti</button>
+                  </form>
                 </div>
             </div>
         </div>
     </div>
+  @endforeach
 </div>
 @endsection
