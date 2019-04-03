@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -34,6 +34,10 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        /* Į login kontrolerį gali patekti tik svečias (neprisijungęs vartotojas). Uždejus guest middleware suveikia RedirectIfAuthenticated.php middlewaras.
+        Middleware grupes galima rasti Kernel.php.
+
+        Except reiškia, jog neuždės ant logout routo guest middleware grupės. */
         $this->middleware('guest')->except('logout');
     }
 }

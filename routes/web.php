@@ -29,6 +29,12 @@ Route::prefix('projects')->group(function () { // Grupuoja rautus pagal vardą
 });
 // vienam projektui
 
+
+Route::get('/admin', 'AdminController@index')->name('admin.index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', function() {
+//   return view('home');
+// });
+
+// Route::get('/home', 'HomeController@index')->name('home');
