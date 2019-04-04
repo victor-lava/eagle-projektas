@@ -28,7 +28,7 @@ class AdminController extends Controller
       $contact = Contact::findOrFail($request->id);
       $contact->delete(); // trina įrašą
 
-      Contact::destroy($request->id); // trina įrašą
+      // Contact::destroy($request->id); // trina įrašą
 
       return redirect()->route('admin.index')
                         ->with('message', "Įrašas #$request->id sėkmingai ištrintas.");
