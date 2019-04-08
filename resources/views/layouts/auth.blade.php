@@ -39,6 +39,9 @@
                       <li class="nav-item">
                         <a href="{{ route('contacts.index') }}" class="nav-link">Kontaktai</a>
                       </li>
+                      <li class="nav-item">
+                        <a href="{{ route('categories.index') }}" class="nav-link">Kategorijos</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -32,7 +32,7 @@ Route::prefix('projects')->group(function () { // Grupuoja rautus pagal vardą
 
 Route::get('/admin', 'AdminController@index')->name('admin.index');
 
-
+Route::resource('/admin/categories', 'Admin\CategoryController')->middleware('auth');
 Route::resource('/admin/contacts', 'Admin\ContactController')->only(['index', 'destroy'])->middleware('auth'); // sukurs tik index ir destroy routus
 Route::resource('/admin/projects', 'Admin\ProjectController')->middleware('auth');
 // Route::resource('/admin/contact', 'Admin\ContactController')->only(
