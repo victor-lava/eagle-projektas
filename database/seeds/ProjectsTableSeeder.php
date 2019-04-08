@@ -46,7 +46,7 @@ class ProjectsTableSeeder extends Seeder
         $project->year = $faker->biasedNumberBetween(2000, 2019);
         $project->client = $faker->company();
         $project->image_url = $faker->imageUrl(380, 400, 'nature');
-        $project->kategorija = $categories[rand(0,3)];
+        $project->kategorija = 1;
         $project->save();
       }
 

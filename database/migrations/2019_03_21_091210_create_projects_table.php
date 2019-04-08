@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
 
 	php artisan migrate:fresh (paleidžia ir up() ir down() metodus lentelėse)
     */
-    
+
     /**
      * Run the migrations.
      *
@@ -36,8 +36,10 @@ class CreateProjectsTable extends Migration
             $table->integer('year'); // int
             $table->string('client');
             $table->string('image_url');
-            $table->string('kategorija');
+            $table->unsignedBigInteger('kategorija'); // teigiami sveikiejie skaiciai
             $table->timestamps(); // created_at ir updated_at TIMESTAMP
+
+            // foreign šioje lentelėje esantis stulpelis, references - kitoje lentelėje esantis stulpelis, on - kitos lentelės pavadinimas
         });
     }
 

@@ -36,6 +36,9 @@
                       <li class="nav-item">
                         <a href="{{ route('projects.index') }}" class="nav-link">Projektai</a>
                       </li>
+                      <li class="nav-item">
+                        <a href="{{ route('contacts.index') }}" class="nav-link">Kontaktai</a>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
