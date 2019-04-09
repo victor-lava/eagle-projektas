@@ -15,7 +15,12 @@ class ForeignKeyProjectsCategories extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
 
-          $table->foreign('kategorija')->references('id')->on('projects_category');
+          $table->foreign('kategorija')
+                ->references('id')
+                ->on('projects_category');
+                // ->onDelete('cascade'); // onDelete('cascade') reiškia, jog ištrins visus susietus įrašus, paprasčiausias sprendimas. 
+                // Kitu atvėju naudoti softDelete
+                // * https://laravel.com/docs/5.7/eloquent#soft-deleting
 
         });
     }

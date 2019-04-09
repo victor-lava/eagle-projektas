@@ -15,7 +15,13 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <span>
-                      <span class="badge badge-danger">{{ ucfirst($project->kategorija) }}</span>
+                      <span class="badge badge-danger">
+                        @if(isset($category->title))
+                          {{ $category->title}}
+                        @else
+                        Uncategorized
+                        @endif
+                      </span>
                       {{ $project->title }}
                     </span>
                     <img src="{{ $project->image_url }}" height="40" alt="">

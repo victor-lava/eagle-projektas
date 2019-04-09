@@ -32,6 +32,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @auth
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item">
                         <a href="{{ route('projects.index') }}" class="nav-link">Projektai</a>
@@ -43,6 +44,8 @@
                         <a href="{{ route('categories.index') }}" class="nav-link">Kategorijos</a>
                       </li>
                     </ul>
+                    @endif
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

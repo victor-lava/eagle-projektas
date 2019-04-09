@@ -41,14 +41,34 @@
                    @endif
                  </div>
                  <div class="col-md-4">
-                    <label for="title">Kategorija</label>
-                   <input type="text" name="kategorija" placeholder="Kategorija" class="form-control{{ $errors->has('kategorija') ? ' is-invalid' : '' }}" id="kategorija" value="{{ old('kategorija') }}">
 
-                   @if($errors->has('kategorija'))
-                   <div class="invalid-feedback">
-                     {{ $errors->first('kategorija') }}
-                   </div>
-                   @endif
+                   <label for="title">Kategorija</label>
+                   {{-- <input type="text" name="kategorija" placeholder="Kategorija" class="form-control{{ $errors->has('kategorija') ? ' is-invalid' : '' }}" id="kategorija" value="{{ old('kategorija') }}"> --}}
+
+                   <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="kategorija">Kategorija</label>
+                    </div>
+
+                    {{--  Sulyginate seną reikšmę su reikšme iš masyvo, jei reikšmės sutampa, tai vadinasi šitas optionas turi turėti atributą selected
+                    old() grąžiną "string" dėl to konvertuojame į int
+                    --}}
+                    <select class="custom-select{{ $errors->has('category') ? ' is-invalid' : '' }}" name="category" id="kategorija">
+                      <option selected>Pasirinkti...</option>
+                      @foreach($categories as $category)
+                      <option value="{{ $category->id }}"
+                              {{-- old('category') == $category->id ? 'selected' : '' --}}
+                              {{ (int) old('category') === $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                      @endforeach
+                    </select>
+
+                     @if($errors->has('category'))
+                     <div class="invalid-feedback">
+                       {{ $errors->first('category') }}
+                     </div>
+                     @endif
+                  </div>
+
                  </div>
               </div>
               <div class="form-group">

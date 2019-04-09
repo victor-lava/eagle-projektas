@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Project;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,6 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
+
         $projects = Project::all();
 
         return view('admin/projects/index', ['projects' => $projects]);
@@ -27,7 +29,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin/projects/create');
+        $categories = Category::all();
+
+        return view('admin/projects/create', compact('categories'));
     }
 
     /**
@@ -38,12 +42,15 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+      // dd($request);
+
       $request->validate([
         'title' => 'required',
         'description' => 'required',
         'year' => 'required|numeric',
         'client' => 'required',
-        'kategorija' => 'required',
+        'category' => 'required|numeric|exists:projects_category,id',
         'image' => 'required'
       ]);
 
@@ -52,7 +59,7 @@ class ProjectController extends Controller
       $project->description = $request->description;
       $project->year = $request->year;
       $project->client = $request->client;
-      $project->kategorija = $request->kategorija;
+      $project->kategorija = $request->category;
       $project->image_url = $request->image;
 
       $project->save();
@@ -69,7 +76,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin/projects/show', ['project' => $project]);
+        $category = Category::find($project->kategorija); // Galima naudoti šitą variantą, norint paiimti projektų kategorijas, tačiau geriausias yra su Eloquent Relationship
+        // Ref: https://laravel.com/docs/5.8/eloquent-relationships#one-to-one
+
+        return view('admin/projects/show', ['project' => $project, 'category' => $category]);
     }
 
     /**
@@ -80,7 +90,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin/projects/edit', ['project' => $project]);
+        $categories = Category::all();
+
+        return view('admin/projects/edit', compact('project', 'categories'));
     }
 
     /**
@@ -97,7 +109,7 @@ class ProjectController extends Controller
           'description' => 'required',
           'year' => 'required|numeric',
           'client' => 'required',
-          'kategorija' => 'required',
+          'category' => 'required|numeric|exists:projects_category,id',
           'image' => 'required'
         ]);
 
@@ -105,7 +117,7 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->year = $request->year;
         $project->client = $request->client;
-        $project->kategorija = $request->kategorija;
+        $project->kategorija = $request->category;
         $project->image_url = $request->image;
 
         $project->save();

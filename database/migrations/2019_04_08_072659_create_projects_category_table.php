@@ -17,6 +17,7 @@ class CreateProjectsCategoryTable extends Migration
             $table->bigIncrements('id');
             $table->string('title'); // Gėlės
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
