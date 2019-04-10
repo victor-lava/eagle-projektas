@@ -21,6 +21,7 @@
   </section>
 
   @component('partials/gallery', ['projects' => $projects,
+                                  'categories' => $categories,
                                   'isCenter' => true])
   @endcomponent
 

@@ -24,6 +24,7 @@
 
 <!-- PROJEKTAI -->
 @component('partials/gallery', ['projects' => $projects,
+                                'categories' => $categories,
                                 'isCenter' => false])
 @endcomponent
 

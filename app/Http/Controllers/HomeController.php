@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $projects = Project::all();
+        $categories = Category::all();
 
-        return view('pages/home', ['projects' => $projects]);
+        return view('pages/home', compact('projects', 'categories'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Project;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -99,7 +100,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+
       $category->delete();
+
+      Project::where('kategorija', $category->id)->update(['kategorija' => null]);
+      /* UPDATE projects SET kategorija = null
+         WHERE kategorija = 5 */
 
       return redirect()->route('categories.index')
                        ->with('message', "Įrašas #$category->id sėkmingai ištrintas.");

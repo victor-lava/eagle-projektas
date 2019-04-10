@@ -18,8 +18,9 @@ class ProjectController extends Controller
     {
 
         $projects = Project::all();
+        $categories = Category::all();
 
-        return view('admin/projects/index', ['projects' => $projects]);
+        return view('admin/projects/index', compact('projects', 'categories'));
     }
 
     /**
@@ -138,5 +139,14 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.index')
                          ->with('message', "Įrašas #$project->id sėkmingai ištrintas.");
+    }
+
+    public function filter($id) {
+      // echo "veikia";
+      $projects = Project::where('kategorija', $id)->get(); // gauna duomenis, bet naudojamas daugiau nei vienam įrašui (sudeda įrašus į masyvą)
+      // jei gauti vieną rezultatą, tai vietoj ->get naudojam ->first
+      $categories = Category::all();
+
+      return view('admin/projects/index', compact('projects', 'categories'));
     }
 }
