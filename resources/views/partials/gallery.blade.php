@@ -20,7 +20,7 @@
             <div class="portfolioContainer row">
               @foreach($projects as $project)
                 <div class="col-lg-4 {{ isset($project->category) ? Str::slug($project->category->title) : 'uncategorized' }}">
-                    <a href="{{ route('projects.view', $project->id) }}">
+                    <a href="{{ route('projects.view', $project->slug) }}">
                         <div class="portfolio-box">
                             <div class="portfolio-box-img">
                                 <img src="{{ $project->image_url }}" class="img-fluid" alt="member-image">

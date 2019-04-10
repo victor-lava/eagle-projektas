@@ -39,7 +39,7 @@
               </div>
               <div class="col-lg-9">
                   <div class="project-desc margin-t-50">
-                      <p class="text-muted">{{ $project->description }}</p>
+                      <p class="text-muted">{!! $project->description !!}</p>
                   </div>
               </div>
           </div>

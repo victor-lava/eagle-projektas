@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Project;
 use App\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -57,6 +58,7 @@ class ProjectController extends Controller
 
       $project = new Project();
       $project->title = $request->title;
+      $project->slug = Str::slug($request->title);
       $project->description = $request->description;
       $project->year = $request->year;
       $project->client = $request->client;
@@ -123,6 +125,7 @@ class ProjectController extends Controller
         ]);
 
         $project->title = $request->title;
+        $project->slug = Str::slug($request->title);
         $project->description = $request->description;
         $project->year = $request->year;
         $project->client = $request->client;

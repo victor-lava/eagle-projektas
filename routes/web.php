@@ -26,7 +26,7 @@ Route::prefix('projects')->group(function () { // Grupuoja rautus pagal vardą
   // Routas: projects/{id}
 
   // {id} bus parametras ProjectController@view metode
-  Route::get('/{id}', 'ProjectController@view')->name('projects.view');
+  Route::get('/{slug}', 'ProjectController@view')->name('projects.view');
 });
 // vienam projektui
 
