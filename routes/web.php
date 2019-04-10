@@ -14,6 +14,7 @@
 
 // Kai vartotojas nueis į eagle.test/, jam atidarys HomeController kontrolerį ir metodą index
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/testas', 'HomeController@testas')->name('testas');
 Route::get('/contact', 'ContactController@index')->name('contact'); // Skirtas atvaizduoti formai ir forma atvaizduojama metodu get
 
 /* Jei siunčiame duomenis, tai juos siunčiame į routą, kuris sukurtas post metodu. Šis routas pasiekiamas tik, kai siunčiami duomenys. */

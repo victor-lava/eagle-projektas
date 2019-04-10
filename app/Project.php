@@ -13,7 +13,7 @@ class Project extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-
+    
     public function category() {
       // Relationship (one to one)
       // Vienas projektas turi vieną kategoriją

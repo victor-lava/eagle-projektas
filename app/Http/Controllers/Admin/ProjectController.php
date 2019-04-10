@@ -75,12 +75,20 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        $category = Category::find($project->kategorija); // Galima naudoti šitą variantą, norint paiimti projektų kategorijas, tačiau geriausias yra su Eloquent Relationship
-        // Ref: https://laravel.com/docs/5.8/eloquent-relationships#one-to-one
+        $project = Project::find($id);
 
-        return view('admin/projects/show', ['project' => $project, 'category' => $category]);
+        if($project) { // jei projektas rastas
+            $category = Category::find($project->kategorija); // Galima naudoti šitą variantą, norint paiimti projektų kategorijas, tačiau geriausias yra su Eloquent Relationship
+            // Ref: https://laravel.com/docs/5.8/eloquent-relationships#one-to-one
+
+            return view('admin/projects/show', ['project' => $project, 'category' => $category]);
+        } else {
+
+          return redirect()->route('home');
+        }
+        // dd($project);
     }
 
     /**
@@ -143,6 +151,7 @@ class ProjectController extends Controller
 
     public function filter($id) {
       // echo "veikia";
+
       $projects = Project::where('kategorija', $id)->get(); // gauna duomenis, bet naudojamas daugiau nei vienam įrašui (sudeda įrašus į masyvą)
       // jei gauti vieną rezultatą, tai vietoj ->get naudojam ->first
       $categories = Category::all();
