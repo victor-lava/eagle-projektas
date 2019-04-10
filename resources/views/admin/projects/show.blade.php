@@ -34,7 +34,9 @@
                       <span class="badge badge-primary">{{ $project->updated_at }}</span>
                       <h3>{{ $project->client }}</h3>
                       <h4>{{ $project->year }}</h4>
-                      <p>{{ $project->description }}</p>
+                      <p>{!! $project->description !!}</p>
+                      {{-- {!! !!} reiškia, jog turinys bus atvaizduojamas kaip HTML kodas,
+                           pavojinga, nes potencialiai gali būti įterptas kenkejiškas JS kodas. --}}
                     </div>
                     <div class="col-md-4">
                       <img src="{{ $project->image_url }}" height="270" alt="">

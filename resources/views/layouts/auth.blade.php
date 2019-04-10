@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=uk7kehyl41btamq9c7k9xukxhsnwp0yzql4rgu72t2g3pz50"></script>
+    <script>
+    tinymce.init({
+      selector: '#description'
+    });
+    </script>
 </head>
 <body>
     <div id="app">
