@@ -26,7 +26,7 @@ class AddSlugToProjects extends Migration
     public function down()
     {
         Schema::table('projects', function (Blueprint $table) {
-            //
+            $table->dropColumn(['slug']);
         });
     }
 }

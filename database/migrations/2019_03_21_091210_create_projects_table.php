@@ -36,7 +36,7 @@ class CreateProjectsTable extends Migration
             $table->integer('year'); // int
             $table->string('client');
             $table->string('image_url');
-            $table->unsignedBigInteger('kategorija')->nullable(); // teigiami sveikiejie skaiciai
+            $table->unsignedBigInteger('kategorija')->nullable(); // teigiami sveikiejie skaiciai, gali būti "tuščias", t.y NULL
             $table->timestamps(); // created_at ir updated_at TIMESTAMP
             $table->softDeletes();
 
